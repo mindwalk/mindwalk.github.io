@@ -1,0 +1,19 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Nico Inden -- developer and inventor -- smashnet
+    Lucas Dohmen -- developer -- moonbeamlabs
+    David Thönnessen –– developer
+    Simon Bruns
+    Philip Martzok
+
+# THANKS
+
+    Anne Marie Nguyen for the logo (payed via the noun project)
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    jQuery, Modernizr
