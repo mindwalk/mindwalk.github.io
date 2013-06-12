@@ -2,7 +2,7 @@
   "name": "mindwalk",
   "version": "0.1.0",
   "dependencies": {
-    "foundation": "4.2.2",
+    "bootstrap.css": "2.1.1",
     "leaflet": "0.5.1",
     "jquery": "2.0.2",
     "underscore": "1.4.4",
