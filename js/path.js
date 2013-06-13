@@ -18,27 +18,24 @@
     defaults: {
       title: "No Title",
       description: "No Description",
-      createdOn: (new Date()).toLocaleString(),
       tries: 0,
-      points: []
+      points: [],
+      createdOn: (new Date()).toLocaleString()
     },
 
     // Add a new point to this path
-    addPoint: function (question, answer) {
-      var points, point, path;
-      path = this;
-      points = this.get("points");
-      navigator.geolocation.getCurrentPosition(function (geo) {
+    addPoint: function (question, answer, coords) {
+      var path = this,
+        points = this.get("points"),
         point = new window.Point({
-          latitude: geo.coords.latitude,
-          longitude: geo.coords.longitude,
+          latitude: coords.latitude,
+          longitude: coords.longitude,
           question: question,
           answer: answer
         });
 
-        points.push(point.toJSON());
-        path.set("points", points);
-      });
+      points.push(point.toJSON());
+      path.set("points", points);
     },
 
     // Call a function for each point on this path

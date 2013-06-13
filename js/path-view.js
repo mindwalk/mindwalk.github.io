@@ -22,7 +22,6 @@
     },
 
     create: function (e) {
-      var title, description;
       e.preventDefault();
       this.model.set({
         "title": $("input[name=title]", this.$el).val(),
@@ -36,6 +35,46 @@
     cancel: function (e) {
       e.preventDefault();
       this.model.destroy();
+      this.$el.modal("hide");
+      window.mindWalk.navigate("");
+    }
+  });
+
+  window.AddPointForm = Backbone.View.extend({
+    tagName: "form",
+    className: "modal hide fade",
+    template: _.template($("#point-form").html()),
+
+    events: {
+      "click button[type=submit]": "create",
+      "click button.cancel": "cancel"
+    },
+
+    render: function () {
+      this.$el.html(this.template(this.model.toJSON()));
+      $("body").append(this.$el);
+      this.$el.modal();
+      return this;
+    },
+
+    create: function (e) {
+      var question = $("input[name=question]", this.$el).val(),
+        answer = $("textarea[name=answer]", this.$el).val(),
+        model = this.model;
+      e.preventDefault();
+
+      // Maybe show a loading screen for searching for the current position:
+      navigator.geolocation.getCurrentPosition(function (geo) {
+        model.addPoint(question, answer, geo.coords);
+        model.save();
+      });
+
+      this.$el.modal("hide");
+      window.mindWalk.navigate("");
+    },
+
+    cancel: function (e) {
+      e.preventDefault();
       this.$el.modal("hide");
       window.mindWalk.navigate("");
     }

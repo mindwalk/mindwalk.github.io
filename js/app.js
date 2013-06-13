@@ -13,7 +13,8 @@ $(function () {
     routes: {
       "": "mainPage",
       "paths/:id": "getPath",
-      "newPath": "createPath"
+      "newPath": "createPath",
+      "addPointTo/:id": "addPointToPath"
     },
 
     mainPage: function () {
@@ -24,14 +25,19 @@ $(function () {
     },
 
     createPath: function () {
-      var paths = this.paths;
-      var creationForm = new window.PathCreationForm({
-        model: paths.create()
-      });
+      var paths = this.paths,
+        creationForm = new window.PathCreationForm({
+          model: paths.create()
+        });
       creationForm.render();
     },
 
-    addPointToPath: function () {
+    addPointToPath: function (id) {
+      var path = this.paths.get(id),
+        pointAdderForm = new window.AddPointForm({
+          model: path
+        });
+      pointAdderForm.render();
     }
   }))();
 
