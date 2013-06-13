@@ -5,14 +5,18 @@ $(function () {
   "use strict";
 
   window.mindWalk = new (Backbone.Router.extend({
+    initialize: function () {
+      this.paths = new window.Paths();
+      this.paths.fetch();
+    },
+
     routes: {
       "": "mainPage",
-      "paths/:id": "getPath"
+      "paths/:id": "getPath",
+      "newPath": "createPath"
     },
 
     mainPage: function () {
-      this.paths = new window.Paths();
-      this.paths.fetch();
     },
 
     getPath: function (id) {
@@ -20,14 +24,14 @@ $(function () {
     },
 
     createPath: function () {
-      // path = this.paths.create();
+      var paths = this.paths;
+      var creationForm = new window.PathCreationForm({
+        model: paths.create()
+      });
+      creationForm.render();
     },
 
     addPointToPath: function () {
-      // navigator.geolocation.getCurrentPosition(function (geo) {
-      //   path.addPoint("What is your name?", "Sir Lancelot", geo.coords);
-      //   path.save();
-      // });
     }
   }))();
 
