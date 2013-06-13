@@ -1,13 +1,11 @@
-/*jslint browser: true */
-/*global Backbone, Path */
+/*jslint browser: true, nomen: true, indent: 2, maxlen: 80 */
+/*global Backbone, _, $ */
 
 (function () {
   "use strict";
 
   window.Paths = Backbone.Collection.extend({
     localStorage: new Backbone.LocalStorage("paths"),
-    model: Path
+    model: window.Path
   });
-
-  window.paths = new window.Paths();
 }());
