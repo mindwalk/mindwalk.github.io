@@ -1,6 +1,4 @@
 {
-  "name": "mindwalk",
-  "version": "0.1.0",
   "dependencies": {
     "bootstrap.css": "2.1.1",
     "leaflet": "0.5.1",
