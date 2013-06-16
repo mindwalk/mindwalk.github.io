@@ -1,5 +1,5 @@
 /*jslint browser: true, nomen: true, indent: 2, maxlen: 80 */
-/*global Backbone, _, $ */
+/*global Backbone */
 
 (function () {
   "use strict";

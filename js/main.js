@@ -1,19 +1,25 @@
-$(function(){
+/*jslint browser: true, nomen: true, indent: 2, maxlen: 100 */
+/*global $, console, L */
 
-  var x=document.getElementById("map");
-  function getLocation(callBack){
-    if (navigator.geolocation){
+$(function () {
+  "use strict";
+
+  var x = document.getElementById("map");
+  function getLocation(callBack) {
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(callBack);
     } else {
-      x.innerHTML="Geolocation is not supported by this browser.";
+      x.innerHTML = "Geolocation is not supported by this browser.";
     }
   }
   
   function showPosition(position) {
-    console.log("Latitude: " + position.coords.latitude + 
-    "\nLongitude: " + position.coords.longitude); 
+    console.log("Latitude: " + position.coords.latitude +
+    "\nLongitude: " + position.coords.longitude);
     console.log(position);
-    window.karte = L.map('map').setView([position.coords.latitude, position.coords.longitude], 13);
+    window.karte = L.map('map').setView([
+      position.coords.latitude, position.coords.longitude
+    ], 13);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -23,7 +29,7 @@ $(function(){
     L.marker([position.coords.latitude, position.coords.longitude]).addTo(window.karte)
     .bindPopup('You are here ;)')
     .openPopup();
-  } 
+  }
 
   function addCurrentPosition(position) {
     L.marker([position.coords.latitude, position.coords.longitude]).addTo(window.karte)
@@ -31,7 +37,7 @@ $(function(){
     .openPopup();
   }
 
-  $("#addPosition").click(function() {
+  $("#addPosition").click(function () {
     getLocation(addCurrentPosition);
   });
 

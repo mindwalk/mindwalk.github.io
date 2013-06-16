@@ -1,8 +1,33 @@
-module.exports = function(grunt) {
+/*jslint browser: true, nomen: true, indent: 2 */
+/*global module */
+
+module.exports = function (grunt) {
+  "use strict";
 
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
+    jshint: {
+      options: {
+        bitwise: true,
+        camelcase: true,
+        curly: true,
+        eqeqeq: true,
+        forin: true,
+        immed: true,
+        indent: 2,
+        latedef: true,
+        newcap: true,
+        noempty: true,
+        // quotmark: 'single',
+        undef: true,
+        unused: true,
+        strict: true,
+        trailing: true
+      },
+      all: ['Gruntfile.js', 'js/*.js', '!js/vendor.min.js']
+    },
 
     uglify: {
       options: {
@@ -10,12 +35,12 @@ module.exports = function(grunt) {
       },
       vendorjs: {
         src: [
-              "components/jquery/jquery.js",
-              "components/underscore/underscore.js",
-              "components/backbone/backbone.js",
-              "components/backbone.localStorage/backbone.localStorage.js",
-              "components/bootstrap.css/js/bootstrap.js",
-              "components/leaflet/dist/leaflet.js"
+          "components/jquery/jquery.js",
+          "components/underscore/underscore.js",
+          "components/backbone/backbone.js",
+          "components/backbone.localStorage/backbone.localStorage.js",
+          "components/bootstrap.css/js/bootstrap.js",
+          "components/leaflet/dist/leaflet.js"
         ],
         dest: 'js/vendor.min.js'
       }
@@ -41,6 +66,7 @@ module.exports = function(grunt) {
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task(s).
   grunt.registerTask('default', ['uglify:vendorjs', 'cssmin:vendorcss']);
