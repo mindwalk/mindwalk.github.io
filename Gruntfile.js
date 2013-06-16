@@ -29,6 +29,19 @@ module.exports = function (grunt) {
       all: ['Gruntfile.js', 'js/*.js', '!js/vendor.min.js']
     },
 
+    connect: {
+      server: {
+        options: {
+          keepalive: true
+        }
+      }
+    },
+
+    bower: {
+      install: {
+      }
+    },
+
     uglify: {
       options: {
         banner: '/*! DO NOT CHANGE THIS FILE BY HAND. \n Last generated at <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -67,7 +80,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-bower-task');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify:vendorjs', 'cssmin:vendorcss']);
+  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('server', ['connect']);
+  grunt.registerTask('vendor', ['bower:install', 'uglify:vendorjs', 'cssmin:vendorcss']);
 };
