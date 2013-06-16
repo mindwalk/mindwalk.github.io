@@ -3,6 +3,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     uglify: {
       options: {
         banner: '/*! DO NOT CHANGE THIS FILE BY HAND. \n Last generated at <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -18,12 +19,29 @@ module.exports = function(grunt) {
         ],
         dest: 'js/vendor.min.js'
       }
+    },
+
+    cssmin: {
+      vendorcss: {
+        options: {
+          banner: '/*! DO NOT CHANGE THIS FILE BY HAND. \n Last generated at <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+          keepSpecialComments: 0
+        },
+        files: {
+          'css/vendor.min.css': [
+            "components/bootstrap.css/css/bootstrap.css",
+            "components/bootstrap.css/css/bootstrap-responsive.css",
+            "components/leaflet/dist/leaflet.css"
+          ]
+        }
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify:vendorjs']);
+  grunt.registerTask('default', ['uglify:vendorjs', 'cssmin:vendorcss']);
 };
