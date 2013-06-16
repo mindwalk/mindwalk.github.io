@@ -64,6 +64,7 @@
       e.preventDefault();
 
       // Maybe show a loading screen for searching for the current position:
+      // or a [ladda](https://github.com/hakimel/Ladda)
       navigator.geolocation.getCurrentPosition(function (geo) {
         model.addPoint(question, answer, geo.coords);
         model.save();
