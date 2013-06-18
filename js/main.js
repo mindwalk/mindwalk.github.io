@@ -72,9 +72,14 @@ $(function () {
     getLocation(addCurrentPosition);
   });
 
+  $("#addQuestion").click(function () {
+    document.all.questionModal.innerHTML = $('#point-form').html();
+  });
+
   $("#joinToPath").click(function () {
     joinToPath();
   });
 
+  L.Icon.Default.imagePath = "img/";
   getLocation(showPosition);
 });
