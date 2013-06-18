@@ -6,7 +6,7 @@
 
   window.PathCreationForm = Backbone.View.extend({
     tagName: "form",
-    className: "modal hide fade",
+    className: "modal hide",
     template: _.template($("#path-form").html()),
 
     events: {
@@ -42,7 +42,7 @@
 
   window.AddPointForm = Backbone.View.extend({
     tagName: "form",
-    className: "modal hide fade",
+    className: "modal hide",
     template: _.template($("#point-form").html()),
 
     events: {
