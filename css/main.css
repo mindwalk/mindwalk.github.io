@@ -8,6 +8,10 @@
   margin: 5px 0;
 }
 
+#lead_top {
+  margin-bottom: 5px;
+}
+
 .container {
   width: 95%;
 }
