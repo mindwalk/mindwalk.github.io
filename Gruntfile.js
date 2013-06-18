@@ -73,6 +73,13 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    copy: {
+      vendor: {
+        files: [
+          {expand: true, flatten: true, src: ['components/leaflet/dist/images/*'], dest: 'img/'}
+        ]
+      }
     }
   });
 
@@ -82,9 +89,15 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-bower-task');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
   grunt.registerTask('default', ['jshint']);
   grunt.registerTask('server', ['connect']);
-  grunt.registerTask('vendor', ['bower:install', 'uglify:vendorjs', 'cssmin:vendorcss']);
+  grunt.registerTask('vendor', [
+    'bower:install',
+    'uglify:vendorjs',
+    'cssmin:vendorcss',
+    'copy:vendor'
+  ]);
 };
