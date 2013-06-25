@@ -1,12 +1,12 @@
 /*jslint browser: true, nomen: true, indent: 2, maxlen: 100, plusplus: true */
-/*global Backbone, $, console, L */
+/*global Backbone, $, _, console, L */
 
 (function () {
   "use strict";
 
   window.MapView = Backbone.View.extend({
     tagName: "div",
-    id: "map",
+    template: _.template($("#newwalk").html()),
 
     events: {
       "click #addPosition": "addPosition",
@@ -15,6 +15,7 @@
     },
 
     render: function () {
+      this.$el.html(this.template());
       $("#content").empty().append(this.$el);
       this.x = document.getElementById("map");
       this.getLocation(this.showPosition);
