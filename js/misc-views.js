@@ -51,9 +51,15 @@
     showExistingWalk: function () {
       this.$el.modal("hide");
       window.mindWalk.navigate("", true);
+    },
+
+    cancel: function (e) {
+      e.preventDefault();
+      this.$el.modal("hide");
+      window.mindWalk.navigate("", true);
     }
   });
-  
+
   window.MapView = Backbone.View.extend({
     tagName: "div",
     template: _.template($("#newwalk").html()),
