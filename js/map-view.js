@@ -6,7 +6,7 @@
 
   window.MapView = Backbone.View.extend({
     tagName: "div",
-    template: _.template($("#newwalk").html()),
+    template: _.template($("#show-map").html()),
 
     events: {
       "click #addPosition": "addPosition",
