@@ -11,6 +11,17 @@
       // question
       // answer
       createdOn: (new Date()).toLocaleString()
+    },
+
+    initialize: function () {
+      var rlat, rlon;
+      if (window.mindWalk.testing) {
+        // For Testing, put in some randomness
+        rlat = parseInt(this.get("latitude"), 10) + (Math.random() - 0.5) / 10;
+        rlon = parseInt(this.get("longitude"), 10) + (Math.random() - 0.5) / 10;
+        this.set("latitude", rlat);
+        this.set("longitude", rlon);
+      }
     }
   });
 
