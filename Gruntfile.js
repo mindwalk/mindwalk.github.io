@@ -44,7 +44,9 @@ module.exports = function (grunt) {
 
     uglify: {
       options: {
-        banner: '/*! DO NOT CHANGE THIS FILE BY HAND. \n Last generated at <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '/*! DO NOT CHANGE THIS FILE BY HAND. \n Last generated at <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+        sourceMap: "vendor.min.js.map",
+        sourceMapRoot: "../"
       },
       vendorjs: {
         src: [
@@ -74,22 +76,23 @@ module.exports = function (grunt) {
         }
       }
     },
+
     copy: {
       vendor: {
         files: [
-          {expand: true, flatten: true, src: ['components/leaflet/dist/images/*'], dest: 'img/'}
+          { expand: true, flatten: true, src: ['components/leaflet/dist/images/*'], dest: 'img/' }
         ]
       }
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
   grunt.registerTask('default', ['jshint']);

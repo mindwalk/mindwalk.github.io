@@ -67,17 +67,20 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </fieldset>
     </script>
+
+    <script type="text/template" id="welcome-page">
+      <p class="lead" id="lead_top">Mindwalk</p>
+      <a href="#chooseAction">
+        <img src="logo.svg" width="350" alt="MindWalk"/>
+      </a>
+      <p class="lead">A project to help you remember things.</p>
+    </script>
   </head>
 
   <body>
     <div class="container">
-      <div class="hero-unit" id="teaser">
-        <p class="lead" id="lead_top">Mindwalk</p>
-        <a href="#chooseAction">
-          <img src="logo.svg" width="350" alt="MindWalk"/>
-        </a>
-        <p class="lead">A project to help you remember things.</p>
-      </div>
+      <section id="content">
+      </section>
 
       <footer>
         <p>A project for the eLearning Lecture at RWTH Aachen University, 2013</p>
@@ -91,6 +94,7 @@
     <script src="js/main.js"></script>
     <script src="js/path.js"></script>
     <script src="js/paths.js"></script>
+    <script src="js/misc-views.js"></script>
     <script src="js/path-view.js"></script>
     <script src="js/app.js"></script>
   </body>
