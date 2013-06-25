@@ -19,6 +19,8 @@ $(function () {
     },
 
     mainPage: function () {
+      var welcomeView = new window.WelcomeView();
+      welcomeView.render();
     },
 
     getPath: function (id) {
