@@ -9,9 +9,12 @@
     template: _.template($("#show-map").html()),
 
     events: {
-      "click #addPosition": "addPosition",
-      "click #addQuestion": "addQuestion",
-      "click #joinToPath": "joinToPath"
+      "click #addQuestion": "addQuestion"
+    },
+
+    initialize: function () {
+      // TODO:
+      this.path_id = "b78a6116-b2d4-5343-ddb8-c1550aa6ef94";
     },
 
     render: function () {
@@ -22,13 +25,9 @@
       return this;
     },
 
-    addPosition: function () {
-      this.getLocation(this.addCurrentPosition);
-    },
-
     addQuestion: function () {
-      this.getLocation(this.addCurrentPosition);
-      document.all.questionModal.innerHTML = $('#point-form').html();
+      // TODO: this.getLocation(this.addCurrentPosition);
+      window.mindWalk.navigate("addPointTo/" + this.path_id, true);
     },
 
     getLocation: function (callBack) {
