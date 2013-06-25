@@ -30,6 +30,22 @@
       </fieldset>
     </script>
 
+    <script type="text/template" id="choose-action">
+      <fieldset class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="myModalLabel">Choose your action</h3>
+      </fieldset>
+
+      <fieldset class="modal-body">
+        <button type="button" class="btn" id="newWalk">Create a new walk!</button><br>
+        <button type="button" class="btn" id="existingWalk">Learn existing walks!</button>
+      </fieldset>
+
+      <fieldset class="modal-footer">
+        <button class="cancel btn" aria-hidden="true">Close</button>
+      </fieldset>
+    </script>
+
     <script type="text/template" id="point-form">
       <fieldset class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -55,7 +71,9 @@
     <div class="container">
       <div class="hero-unit" id="teaser">
         <p class="lead" id="lead_top">Mindwalk</p>
-        <img src="logo.svg" width="350" alt="MindWalk"/>
+        <a href="#chooseAction">
+          <img src="logo.svg" width="350" alt="MindWalk"/>
+        </a>
         <p class="lead">A project to help you remember things.</p>
       </div>
 

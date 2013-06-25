@@ -40,6 +40,36 @@
     }
   });
 
+  window.ChooseActionForm = Backbone.View.extend({
+    tagName: "form",
+    className: "modal hide",
+    template: _.template($("#choose-action").html()),
+
+    events: {
+      "click button[id=newWalk]": "openNewWalk",
+      "click button[id=existingWalk]": "showExistingWalk",
+      "click button.cancel": "cancel"
+    },
+
+    render: function () {
+      this.$el.html(this.template());
+      $("body").append(this.$el);
+      this.$el.modal();
+      return this;
+    },
+
+    openNewWalk: function () {
+      this.$el.modal("hide");
+      window.mindWalk.navigate("");
+    },
+
+    showExistingWalk: function () {
+      this.$el.modal("hide");
+      window.mindWalk.navigate("");
+    }
+  });
+
+
   window.AddPointForm = Backbone.View.extend({
     tagName: "form",
     className: "modal hide",

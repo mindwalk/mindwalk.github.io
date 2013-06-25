@@ -14,7 +14,8 @@ $(function () {
       "": "mainPage",
       "paths/:id": "getPath",
       "newPath": "createPath",
-      "addPointTo/:id": "addPointToPath"
+      "addPointTo/:id": "addPointToPath",
+      "chooseAction": "chooseAction"
     },
 
     mainPage: function () {
@@ -38,6 +39,13 @@ $(function () {
           model: path
         });
       pointAdderForm.render();
+    },
+
+    chooseAction: function() {
+      var chooseActionForm = new window.ChooseActionForm({
+        
+      });
+      chooseActionForm.render();
     }
   }))();
 
