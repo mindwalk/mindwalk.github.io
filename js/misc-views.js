@@ -45,12 +45,12 @@
 
     openNewWalk: function () {
       this.$el.modal("hide");
-      window.mindWalk.navigate("");
+      window.mindWalk.navigate("", true);
     },
 
     showExistingWalk: function () {
       this.$el.modal("hide");
-      window.mindWalk.navigate("");
+      window.mindWalk.navigate("", true);
     }
   });
 }());
