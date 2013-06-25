@@ -21,6 +21,9 @@ $(function () {
       "listWalks": "listWalks"
     },
 
+    // Testing Mode activated
+    testing: true,
+
     mainPage: function () {
       var welcomeView = new window.WelcomeView();
       welcomeView.render();
