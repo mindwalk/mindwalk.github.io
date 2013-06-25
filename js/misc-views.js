@@ -70,6 +70,12 @@
     showExistingWalk: function () {
       this.$el.modal("hide");
       window.mindWalk.navigate("", true);
+    },
+
+    cancel: function (e) {
+      e.preventDefault();
+      this.$el.modal("hide");
+      window.mindWalk.navigate("", true);
     }
   });
 
