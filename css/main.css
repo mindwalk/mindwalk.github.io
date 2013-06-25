@@ -4,6 +4,10 @@
   margin-bottom: 10px;
 }
 
+#teaser .logo {
+  cursor: pointer;
+}
+
 #map {
   margin: 5px 0;
 }

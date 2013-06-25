@@ -10,10 +10,18 @@
     id: "teaser",
     template: _.template($("#welcome-page").html()),
 
+    events: {
+      "click img.logo": "showActionChooser"
+    },
+
     render: function () {
       this.$el.html(this.template());
       $("#content").empty().append(this.$el);
       return this;
+    },
+
+    showActionChooser: function () {
+      window.mindWalk.navigate("chooseAction", true);
     }
   });
 }());
