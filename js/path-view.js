@@ -29,7 +29,7 @@
       });
       this.model.save();
       this.$el.modal("hide");
-      window.mindWalk.navigate("showMap", true);
+      window.mindWalk.navigate("showMap/" + this.model.get("id"), true);
     },
 
     cancel: function (e) {
@@ -58,7 +58,7 @@
     },
 
     create: function (e) {
-      var question = $("input[name=question]", this.$el).val(),
+      var question = $("textarea[name=question]", this.$el).val(),
         answer = $("textarea[name=answer]", this.$el).val(),
         model = this.model;
       e.preventDefault();
@@ -71,13 +71,13 @@
       });
 
       this.$el.modal("hide");
-      window.mindWalk.navigate("", true);
+      window.mindWalk.navigate("showMap/" + this.model.get("id"), true);
     },
 
     cancel: function (e) {
       e.preventDefault();
       this.$el.modal("hide");
-      window.mindWalk.navigate("", true);
+      window.mindWalk.navigate("showMap/" + this.model.get("id"), true);
     }
   });
 }());

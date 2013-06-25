@@ -17,7 +17,7 @@ $(function () {
       "newPath": "createPath",
       "addPointTo/:id": "addPointToPath",
       "chooseAction": "chooseAction",
-      "showMap": "showMap",
+      "showMap/:id": "showMap",
       "listWalks": "listWalks"
     },
 
@@ -53,8 +53,10 @@ $(function () {
       chooseActionForm.render();
     },
 
-    showMap: function() {
-      var mapView = new window.MapView({});
+    showMap: function(id) {
+      var mapView = new window.MapView({
+        model: new Backbone.Model({id: id})
+      });
       mapView.render();
     }
   

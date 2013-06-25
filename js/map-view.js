@@ -12,11 +12,6 @@
       "click #addQuestion": "addQuestion"
     },
 
-    initialize: function () {
-      // TODO:
-      this.path_id = "b78a6116-b2d4-5343-ddb8-c1550aa6ef94";
-    },
-
     render: function () {
       this.$el.html(this.template());
       $("#content").empty().append(this.$el);
@@ -26,8 +21,7 @@
     },
 
     addQuestion: function () {
-      // TODO: this.getLocation(this.addCurrentPosition);
-      window.mindWalk.navigate("addPointTo/" + this.path_id, true);
+      window.mindWalk.navigate("addPointTo/" + this.model.get("id"), true);
     },
 
     getLocation: function (callBack) {
