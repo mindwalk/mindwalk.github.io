@@ -25,6 +25,25 @@
     }
   });
 
+  window.ShowMapView = Backbone.View.extend({
+    tagName: "div",
+    template: _.template($("#show-map").html()),
+
+    events: {
+      "": ""
+    },
+
+    render: function () {
+      this.$el.html(this.template());
+      $("#content").empty().append(this.$el);
+      return this;
+    },
+
+    showActionChooser: function () {
+      window.mindWalk.navigate("chooseAction", true);
+    }
+  });
+
   window.ChooseActionForm = Backbone.View.extend({
     tagName: "form",
     className: "modal hide",
@@ -45,23 +64,12 @@
 
     openNewWalk: function () {
       this.$el.modal("hide");
-      window.mindWalk.navigate("", true);
+      window.mindWalk.navigate("newPath", true);
     },
 
     showExistingWalk: function () {
       this.$el.modal("hide");
       window.mindWalk.navigate("", true);
-    }
-  });
-  
-  window.MapView = Backbone.View.extend({
-    tagName: "div",
-    template: _.template($("#newwalk").html()),
-
-    render: function () {
-      this.$el.html(this.template());
-      $("#content").empty().append(this.$el);
-      return this;
     }
   });
 

@@ -16,8 +16,8 @@ $(function () {
       "newPath": "createPath",
       "addPointTo/:id": "addPointToPath",
       "chooseAction": "chooseAction",
-      "newwalk": "newwalk",
-      "listwalks": "listwalks"
+      "showMap": "showMap",
+      "listWalks": "listWalks"
     },
 
     mainPage: function () {
@@ -50,7 +50,13 @@ $(function () {
         
       });
       chooseActionForm.render();
+    },
+
+    showMap: function() {
+      var showMapView = new window.ShowMapView({});
+      showMapView.render();
     }
+  
   }))();
 
   Backbone.history.start();

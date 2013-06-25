@@ -29,7 +29,7 @@
       });
       this.model.save();
       this.$el.modal("hide");
-      window.mindWalk.navigate("", true);
+      window.mindWalk.navigate("showMap", true);
     },
 
     cancel: function (e) {
