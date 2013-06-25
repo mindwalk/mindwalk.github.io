@@ -46,20 +46,18 @@ $(function () {
       pointAdderForm.render();
     },
 
-    chooseAction: function() {
-      var chooseActionForm = new window.ChooseActionForm({
-        
-      });
+    chooseAction: function () {
+      var chooseActionForm = new window.ChooseActionForm();
       chooseActionForm.render();
     },
 
-    showMap: function(id) {
-      var mapView = new window.MapView({
-        model: new Backbone.Model({id: id})
-      });
+    showMap: function (id) {
+      var path = this.paths.get(id),
+        mapView = new window.MapView({
+          model: path
+        });
       mapView.render();
     }
-  
   }))();
 
   Backbone.history.start();
