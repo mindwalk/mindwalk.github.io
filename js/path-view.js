@@ -29,14 +29,14 @@
       });
       this.model.save();
       this.$el.modal("hide");
-      window.mindWalk.navigate("");
+      window.mindWalk.navigate("", true);
     },
 
     cancel: function (e) {
       e.preventDefault();
       this.model.destroy();
       this.$el.modal("hide");
-      window.mindWalk.navigate("");
+      window.mindWalk.navigate("", true);
     }
   });
 
@@ -71,13 +71,13 @@
       });
 
       this.$el.modal("hide");
-      window.mindWalk.navigate("");
+      window.mindWalk.navigate("", true);
     },
 
     cancel: function (e) {
       e.preventDefault();
       this.$el.modal("hide");
-      window.mindWalk.navigate("");
+      window.mindWalk.navigate("", true);
     }
   });
 }());
