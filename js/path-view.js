@@ -60,10 +60,16 @@
 
     openNewWalk: function () {
       this.$el.modal("hide");
-      window.mindWalk.navigate("");
+      window.mindWalk.navigate("newwalk");
     },
 
     showExistingWalk: function () {
+      this.$el.modal("hide");
+      window.mindWalk.navigate("listwalks");
+    },
+    
+    cancel: function (e) {
+      e.preventDefault();
       this.$el.modal("hide");
       window.mindWalk.navigate("");
     }
