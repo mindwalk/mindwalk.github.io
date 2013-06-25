@@ -16,4 +16,16 @@
       return this;
     }
   });
+  
+  window.MapView = Backbone.View.extend({
+    tagName: "div",
+    template: _.template($("#newwalk").html()),
+
+    render: function () {
+      this.$el.html(this.template());
+      $("#content").empty().append(this.$el);
+      return this;
+    }
+  });
+
 }());

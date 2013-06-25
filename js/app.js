@@ -15,7 +15,9 @@ $(function () {
       "paths/:id": "getPath",
       "newPath": "createPath",
       "addPointTo/:id": "addPointToPath",
-      "chooseAction": "chooseAction"
+      "chooseAction": "chooseAction",
+      "newwalk": "newwalk",
+      "listwalks": "listwalks"
     },
 
     mainPage: function () {
