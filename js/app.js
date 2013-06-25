@@ -54,8 +54,8 @@ $(function () {
     },
 
     showMap: function() {
-      var showMapView = new window.ShowMapView({});
-      showMapView.render();
+      var mapView = new window.MapView({});
+      mapView.render();
     }
   
   }))();

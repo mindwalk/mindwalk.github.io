@@ -27,6 +27,7 @@
     },
 
     addQuestion: function () {
+      this.getLocation(this.addCurrentPosition);
       document.all.questionModal.innerHTML = $('#point-form').html();
     },
 
