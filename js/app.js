@@ -1,5 +1,5 @@
 /*jslint browser: true, nomen: true, indent: 2, maxlen: 80 */
-/*global Backbone, $ */
+/*global Backbone, $, L */
 
 $(function () {
   "use strict";
@@ -8,6 +8,7 @@ $(function () {
     initialize: function () {
       this.paths = new window.Paths();
       this.paths.fetch();
+      L.Icon.Default.imagePath = "img/";
     },
 
     routes: {
