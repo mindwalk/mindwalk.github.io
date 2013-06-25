@@ -4,17 +4,21 @@
 (function () {
   "use strict";
 
-  var x = document.getElementById("map");
-
   window.MapView = Backbone.View.extend({
-    initialize: function () {
-      this.getLocation(this.showPosition);
-    },
+    tagName: "div",
+    id: "map",
 
     events: {
       "click #addPosition": "addPosition",
       "click #addQuestion": "addQuestion",
       "click #joinToPath": "joinToPath"
+    },
+
+    render: function () {
+      $("#content").empty().append(this.$el);
+      this.x = document.getElementById("map");
+      this.getLocation(this.showPosition);
+      return this;
     },
 
     addPosition: function () {
@@ -29,7 +33,7 @@
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(callBack);
       } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        this.x.innerHTML = "Geolocation is not supported by this browser.";
       }
     },
 
