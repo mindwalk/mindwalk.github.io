@@ -19,8 +19,7 @@ $(function () {
       "chooseAction": "chooseAction",
       "showMap/:id": "showMap",
       "listWalks": "listWalks",
-      "selectPath": "selectPath",
-      "walkPath/:id": "walkPath"
+      "selectPath": "selectPath"
     },
 
     // Testing Mode activated
@@ -69,9 +68,6 @@ $(function () {
         collection: this.paths
       });
       selectPathForm.render();
-    },
-
-    walkPath: function (id) {
     }
   }))();
 

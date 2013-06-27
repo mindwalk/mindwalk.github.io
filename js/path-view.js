@@ -104,7 +104,7 @@
       e.preventDefault();
       id = $("select[name=name]", this.$el).val();
       this.$el.modal("hide");
-      window.mindWalk.navigate("walkPath/" + id, true);
+      window.mindWalk.navigate("showMap/" + id, true);
     },
 
     cancel: function (e) {
