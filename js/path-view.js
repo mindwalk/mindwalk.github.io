@@ -107,7 +107,9 @@
       window.mindWalk.navigate("walkPath/" + id, true);
     },
 
-    cancel: function () {
+    cancel: function (e) {
+      e.preventDefault();
+      this.$el.modal("hide");
       window.mindWalk.navigate("", true);
     }
   });
