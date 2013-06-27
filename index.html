@@ -45,6 +45,27 @@
       </fieldset>
     </script>
 
+    <script type="text/template" id="select-path-form">
+      <fieldset class="modal-header">
+        <button type="button" class="close cancel" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Select a Path</h3>
+      </fieldset>
+
+      <fieldset class="modal-body">
+        <label for="name">Name of the Path</label>
+        <select class="input-xxlarge" name="name">
+          <% this.collection.forEach(function (path) { %>
+            <option value="<%= path.get("id") %>"><%= path.get("title") %></option>
+          <% }); %>
+        </select>
+      </fieldset>
+
+      <fieldset class="modal-footer">
+        <button class="cancel btn" aria-hidden="true">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </script>
+
     <script type="text/template" id="choose-action">
       <fieldset class="modal-header">
         <button type="button" class="close cancel" aria-hidden="true">x</button>

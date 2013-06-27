@@ -69,7 +69,7 @@
 
     showExistingWalk: function () {
       this.$el.modal("hide");
-      window.mindWalk.navigate("", true);
+      window.mindWalk.navigate("selectPath", true);
     },
 
     cancel: function (e) {
