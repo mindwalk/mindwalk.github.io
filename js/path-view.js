@@ -40,7 +40,7 @@
     }
   });
 
- window.AddPointForm = Backbone.View.extend({
+  window.AddPointForm = Backbone.View.extend({
     tagName: "form",
     className: "modal hide",
     template: _.template($("#point-form").html()),
@@ -78,6 +78,39 @@
       e.preventDefault();
       this.$el.modal("hide");
       window.mindWalk.navigate("showMap/" + this.model.get("id"), true);
+    }
+  });
+
+  window.SelectPathForm = Backbone.View.extend({
+    tagName: "form",
+    className: "modal hide",
+    template: _.template($("#select-path-form").html()),
+
+    events: {
+      "click button[type=submit]": "selectPath",
+      "click button.cancel": "cancel"
+    },
+
+    render: function () {
+      this.$el.html(this.template());
+      this.$el.html(this.template());
+      $("body").append(this.$el);
+      this.$el.modal();
+      return this;
+    },
+
+    selectPath: function (e) {
+      var id;
+      e.preventDefault();
+      id = $("select[name=name]", this.$el).val();
+      this.$el.modal("hide");
+      window.mindWalk.navigate("showMap/" + id, true);
+    },
+
+    cancel: function (e) {
+      e.preventDefault();
+      this.$el.modal("hide");
+      window.mindWalk.navigate("", true);
     }
   });
 }());

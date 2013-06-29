@@ -13,27 +13,20 @@
     },
 
     render: function () {
-      var showPosition = this.showPosition;
+      var showPosition = this.showPosition,
+        initializeMap = this.initializeMap,
+        joinToPath = this.joinToPath,
+        model = this.model;
+
       this.$el.html(this.template());
       $("#content").empty().append(this.$el);
-      this.x = document.getElementById("map");
-      window.karte = L.map('map');
-      this.getLocation(function(position) {
-        var latlng = new L.LatLng(position.coords.latitude, position.coords.longitude);
-        window.karte.setView(latlng, 17);
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(window.karte);
+      this.getLocation(function (latitude, longitude) {
+        initializeMap(latitude, longitude);
+        model.eachPoint(function (point) {
+          showPosition(point);
+        });
+        joinToPath();
       });
-      
-      this.model.eachPoint(function(p) {
-        console.log(p);
-        var lat = p.get("latitude");
-        var lng = p.get("longitude");
-
-        showPosition(lat,lng);
-      });
-
       return this;
     },
 
@@ -43,47 +36,31 @@
 
     getLocation: function (callBack) {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(callBack);
+        navigator.geolocation.getCurrentPosition(function (position) {
+          callBack(position.coords.latitude, position.coords.longitude);
+        });
       } else {
-        this.x.innerHTML = "Geolocation is not supported by this browser.";
+        // FIXME
+        console.log("Oh oh.");
       }
     },
 
-    showPosition: function (lat, lng) {
-      var latlng;
-      window.wpNo = 0;
-      //radius = position.coords.accuracy / 2;
-      //latlng = new L.LatLng(position.coords.latitude, position.coords.longitude);
-      latlng = new L.LatLng(lat, lng);
+    initializeMap: function (latitude, longitude) {
+      var latlng = new L.LatLng(latitude, longitude);
+      window.waypoints = [];
+      window.karte = L.map('map').setView(latlng, 17);
 
-      // add a marker in the given location, attach some popup content to it and open the popup
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(window.karte);
+
       L.marker(latlng).addTo(window.karte);
-
-      // Add radius (accuracy)
-      //L.circle(latlng, radius).addTo(window.karte);
     },
 
-    addCurrentPosition: function (position) {
-      var radius = position.coords.accuracy / 2,
-        lat = position.coords.latitude,
-        lng = position.coords.longitude,
-        latlng;
-      //Testing:
-      lat = parseInt(lat, 10) + (Math.random() - 0.5) / 10;
-      lng = parseInt(lng, 10) + (Math.random() - 0.5) / 10;
-      latlng = new L.LatLng(lat, lng);
-
+    showPosition: function (point) {
+      var latlng = new L.LatLng(point.get("latitude"), point.get("longitude"));
       window.waypoints.push(latlng);
-      window.polyline = L.polyline(window.waypoints, {color: 'blue'});
-      window.karte.fitBounds(window.polyline.getBounds());
-      window.wpNo++;
-
-      L.marker(latlng).addTo(window.karte)
-        .bindPopup('Waypoint ' + window.wpNo)
-        .openPopup();
-
-      // Add radius (accuracy)
-      L.circle(latlng, radius).addTo(window.karte);
+      L.marker(latlng).addTo(window.karte).bindPopup(point.get("question")).openPopup();
     },
 
     joinToPath: function () {

@@ -18,7 +18,8 @@ $(function () {
       "addPointTo/:id": "addPointToPath",
       "chooseAction": "chooseAction",
       "showMap/:id": "showMap",
-      "listWalks": "listWalks"
+      "listWalks": "listWalks",
+      "selectPath": "selectPath"
     },
 
     // Testing Mode activated
@@ -60,6 +61,13 @@ $(function () {
           model: path
         });
       mapView.render();
+    },
+
+    selectPath: function () {
+      var selectPathForm = new window.SelectPathForm({
+        collection: this.paths
+      });
+      selectPathForm.render();
     }
   }))();
 

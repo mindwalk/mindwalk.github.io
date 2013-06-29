@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="css/main.css">
 
     <script type="text/template" id="show-map">
-      <div class="hero-unit" id="teaser">
-        <p class="lead">The map.</p>
-      </div>
-
       <div id="map"></div>
 
       <center>
@@ -28,15 +24,36 @@
     <script type="text/template" id="path-form">
       <fieldset class="modal-header">
         <button type="button" class="close cancel" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Create a new Path</h3>
+        <h3 id="myModalLabel">Create a new walk</h3>
       </fieldset>
 
       <fieldset class="modal-body">
         <label for="title">Title</label>
-        <input type="text" name="title" placeholder="Name of your path">
+        <input type="text" class="input-xxlarge" name="title" placeholder="Name of your path">
 
         <label for="description">Description</label>
-        <textarea name="description" placeholder="Description of what you learn"></textarea>
+        <textarea name="description" class="input-xxlarge" placeholder="Description of what you learn"></textarea>
+      </fieldset>
+
+      <fieldset class="modal-footer">
+        <button class="cancel btn" aria-hidden="true">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </script>
+
+    <script type="text/template" id="select-path-form">
+      <fieldset class="modal-header">
+        <button type="button" class="close cancel" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Select a Path</h3>
+      </fieldset>
+
+      <fieldset class="modal-body">
+        <label for="name">Name of the Path</label>
+        <select class="input-xxlarge" name="name">
+          <% this.collection.forEach(function (path) { %>
+            <option value="<%= path.get("id") %>"><%= path.get("title") %></option>
+          <% }); %>
+        </select>
       </fieldset>
 
       <fieldset class="modal-footer">
@@ -48,18 +65,14 @@
     <script type="text/template" id="choose-action">
       <fieldset class="modal-header">
         <button type="button" class="close cancel" aria-hidden="true">x</button>
-        <h3 id="myModalLabel">Choose your action</h3>
+        <h3 id="myModalLabel">What do you want to do?</h3>
       </fieldset>
 
       <fieldset class="modal-body">
         <center>
-          <button type="button" class="btn" id="newWalk" style="margin-bottom: 5px;">Create a new walk!</button><br>
-          <button type="button" class="btn" id="existingWalk">Learn existing walks!</button>
+          <button type="button" class="input-xxlarge btn" id="newWalk" style="margin-bottom: 5px;">Create a new walk</button><br>
+          <button type="button" class="input-xxlarge btn" id="existingWalk">Choose an existing walk</button>
         </center>
-      </fieldset>
-
-      <fieldset class="modal-footer">
-        <button class="cancel btn" aria-hidden="true">Close</button>
       </fieldset>
     </script>
 
@@ -71,10 +84,10 @@
 
       <fieldset class="modal-body">
         <label for="question">Question</label>
-        <textarea name="question" placeholder="Your question"></textarea>
+        <textarea name="question" class="input-xxlarge" placeholder="Your question"></textarea>
 
         <label for="answer">Answer</label>
-        <textarea name="answer" placeholder="Your answer"></textarea>
+        <textarea name="answer" class="input-xxlarge" placeholder="Your answer"></textarea>
       </fieldset>
 
       <fieldset class="modal-footer">
