@@ -8,6 +8,10 @@ $(function () {
     initialize: function () {
       this.paths = new window.Paths();
       this.paths.fetch();
+      if (this.paths.length === 0) {
+        this.paths.add(window.demoPath);
+        window.demoPath.save();
+      }
       L.Icon.Default.imagePath = "img/";
     },
 
@@ -23,7 +27,7 @@ $(function () {
     },
 
     // Testing Mode activated
-    testing: true,
+    testing: false,
 
     mainPage: function () {
       var welcomeView = new window.WelcomeView();
