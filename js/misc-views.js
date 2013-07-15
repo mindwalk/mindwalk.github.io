@@ -79,4 +79,19 @@
     }
   });
 
+  window.ShowAnswer = Backbone.View.extend({
+    tagName: "form",
+    className: "modal hide",
+    template: _.template($("#show-answer").html()),
+
+    render: function () {
+      this.$el.html(this.template({
+        answer: this.model
+      }));
+      $("body").append(this.$el);
+      this.$el.modal();
+      return this;
+    }
+  });
+
 }());

@@ -23,7 +23,8 @@ $(function () {
       "chooseAction": "chooseAction",
       "showMap/:id": "showMap",
       "listWalks": "listWalks",
-      "selectPath": "selectPath"
+      "selectPath": "selectPath",
+      "openAnswer/:answer": "openAnswer"
     },
 
     // Testing Mode activated
@@ -72,6 +73,14 @@ $(function () {
         collection: this.paths
       });
       selectPathForm.render();
+    },
+
+    openAnswer: function (encodedAnswer) {
+      var answer = decodeURIComponent(encodedAnswer);
+      var showAnswer = new window.ShowAnswer({
+        model: answer
+      });
+      showAnswer.render();
     }
   }))();
 

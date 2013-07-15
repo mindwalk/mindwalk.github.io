@@ -60,7 +60,12 @@
     showPosition: function (point) {
       var latlng = new L.LatLng(point.get("latitude"), point.get("longitude"));
       window.waypoints.push(latlng);
-      L.marker(latlng).addTo(window.karte).bindPopup(point.get("question")).openPopup();
+      // L.marker(latlng).addTo(window.karte).bindPopup(point.get("question"));
+      var link = $("<a>", {
+        "href": "#openAnswer/" + encodeURIComponent(point.get("answer")),
+        "text": "Answer"
+      })[0].outerHTML;
+      L.marker(latlng).addTo(window.karte).bindPopup(point.get("question") + "<br>" + link);
     },
 
     joinToPath: function () {
